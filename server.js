@@ -17,7 +17,7 @@ app.listen(3000, () => {
 
 const signin = require('./Controllor/Signin');
 const register = require('./Controllor/Register');
-//const adminRegistration = require('./Controllor/AdminRegistration');
+const adminRegistration = require('./Controllor/AdminRegistration');
 
 const db = knex({
     client: 'pg',
@@ -34,6 +34,6 @@ app.use(express.json());
 //signin and register
 app.post('/signin', (req, res) => { signin.signin(req, res, db, bcrypt) });
 app.post('/register', (req, res) => { register.register(req, res, db, bcrypt) });
-
+app.get('/adminRegistration', (req, res) => { adminRegistration.adminRegistration(req, res, db) });
 //admin registration
 //app.put('/adminRegistration', (req, res) => { adminRegistration.adminRegistration(req, res, db)});
